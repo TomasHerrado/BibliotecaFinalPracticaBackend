@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: biblioteca-backend
+    env: java
+    buildCommand: cd demo && ./mvnw clean package -DskipTests
+    startCommand: java -jar demo/target/demo-0.0.1-SNAPSHOT.jar
+    healthCheckPath: /api/biblioteca/libros
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: PERSONAS_SERVICE_URL
+        sync: false
